@@ -144,7 +144,7 @@ describe('test::int::KoaWeb', function(){
       const srv = await api.listen()
       listens_request = Taxios.server(srv)
       let res = await listens_request.get('/ok')
-      expect(logger.logs_errors).to.eql([])
+      expect(logger.errors).to.eql([])
       expect( res.data ).to.equal('ok')
     })
 
@@ -153,7 +153,7 @@ describe('test::int::KoaWeb', function(){
       const srv2 = await api.listen2()
       listens_request = Taxios.server2(srv2)
       let res = await listens_request.get('/ok')
-      expect(logger.logs_errors).to.eql([])
+      expect(logger.errors).to.eql([])
       expect( res.data ).to.equal('ok')
     })
 
