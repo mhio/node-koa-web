@@ -22,12 +22,11 @@ npm install @mhio/koa-web
 const {KoaWeb, KoaWebHandler} = require('@mhio/koa-web')
 
 class MyHandler extends KoaWebHandler {
-  static getWhatever(ctx) {
-     return 'whatever'
+  static templateWhateverThePath(ctx) {
+     return 'goes in `whatever` from /the/path'
   }
-  static createOveralls(ctx) {
-     const blah = { truth: false }
-     return blah
+  static responseOveralls(ctx) {
+     return '<span>some html on /overalls</span>'
   }
 }
 

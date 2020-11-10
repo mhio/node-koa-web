@@ -14,7 +14,8 @@
         "module": "bluebird",
         "method": "coroutine"
       }
-    ]
+    ],
+    ["@babel/plugin-proposal-class-properties", { "loose": false }],
   ]
 }
 

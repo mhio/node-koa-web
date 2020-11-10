@@ -3,6 +3,11 @@ import _snakecase from 'lodash.snakecase'
 
 const debug = debugr('mhio:koa-api:KoaWebHandler')
 
+/**
+ * Makes a bit less sense than the API due to extended options.
+ *
+ * @class      KoaWebHandler (name)
+ */
 export class KoaWebHandler {
 
   static _initialiseClass(){
@@ -42,20 +47,22 @@ export class KoaWebHandler {
    */
   static routeHttpMethod(function_name){
     const route_name = this[`route_${function_name}`] || this.routeHttpName(function_name, this.path_joiner)
+    console.log(function_name, this[`template_${function_name}`], this)
+    const template = this[`template_${function_name}`]
     if (function_name.startsWith('get')) {
-      return { route_method: 'get', route_name }
+      return { method: 'get', route_name, template }
     }
     if (function_name.startsWith('post') || function_name.startsWith('create')) {
-      return { route_method: 'post', route_name }
+      return { method: 'post', route_name, template }
     }
     if (function_name.startsWith('delete') || function_name.startsWith('remove')) {
-      return { route_method: 'delete', route_name }
+      return { method: 'delete', route_name, template }
     }
     if (function_name.startsWith('patch') || function_name.startsWith('update')) {
-      return { route_method: 'patch', route_name }
+      return { method: 'patch', route_name, template }
     }
     if (function_name.startsWith('put') || function_name.startsWith('replace')) {
-      return { route_method: 'put', route_name }
+      return { method: 'put', route_name, template }
     }
     return { skip: true }
   }
@@ -68,13 +75,20 @@ export class KoaWebHandler {
     const config = []
     debug('routeConfig for %s', this.name)
     for (const fn_name of Object.getOwnPropertyNames(this)){
-      const { route_method, route_name, skip } = this.routeHttpMethod(fn_name)
+      const { method, route_name, skip, template } = this.routeHttpMethod(fn_name)
       if (skip) {
         // debug('routeConfig skipping', fn_name)
         continue
       }
-      debug('routeConfig found [%s]', fn_name, route_method, route_name)
-      config.push([route_method, `/${route_name}`, this.bindFunction(fn_name) ])
+      debug('routeConfig found [%s]', fn_name, method, route_name, template)
+      const route_path = (route_name.startsWith('/')) ? route_name : `/${route_name}`
+      config.push({
+        method,
+        path: route_path,
+        handler: this.bindFunction(fn_name),
+        template,
+      })
+      //config.push([route_method, `/${route_name}`, this.bindFunction(fn_name), template_name ])
     }
     return config
   }

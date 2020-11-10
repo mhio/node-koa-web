@@ -91,22 +91,25 @@ class KoaWeb {
     return router
   }
 
-  // Things like RAML of OpenAPI would go in here. 
-  // Not sure how you would link functions to config
+
+  /**
+   * Convert incoming config into required `KoaWeb` objects 
+   * `{ method, path, handler, template }`
+   * `[ method, path, fn, template ]`
+   */
   static parseRouteConfig(route_config){
+    // []
     if (Array.isArray(route_config)){
       const method = route_config[0]
       const path = route_config[1]
       const handler = route_config[2]
-      const handler_2nd = route_config[3]
-      if (handler_2nd) return {
-          method,
-          path,
-          handler_object: handler,
-          handler_function: handler_2nd
-        }
-      return { method, path, fn: handler}
+      const template = route_config[3]
+      return { method, path, fn: handler, template }
     }
+    // Things like RAML or OpenAPI would go in here. 
+    // Not sure how you would link functions to config, probably a class generator
+    
+    // Object is passed straight through
     return route_config
   }
 
