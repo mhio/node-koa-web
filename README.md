@@ -78,3 +78,16 @@ const routes = [
 const web = new KoaWeb({ routes })
 web.listen().then(srv => console.log(srv))
 ```
+
+## Related
+
+[npm](https://www.npmjs.com/package/@mhio/koa-web-handle)
+
+[@mhio/koa-api](https://www.npmjs.com/package/@mhio/koa-api) /
+ [@mhio/koa-api-handle](https://www.npmjs.com/package/@mhio/koa-api-handle)
+
+[@mhio/koa-web](https://www.npmjs.com/package/@mhio/koa-web) /
+ [@mhio/koa-web-handle](https://www.npmjs.com/package/@mhio/koa-web-handle)
+
+
+
