@@ -47,7 +47,6 @@ export class KoaWebHandler {
    */
   static routeHttpMethod(function_name){
     const route_name = this[`route_${function_name}`] || this.routeHttpName(function_name, this.path_joiner)
-    console.log(function_name, this[`template_${function_name}`], this)
     const template = this[`template_${function_name}`]
     if (function_name.startsWith('get')) {
       return { method: 'get', route_name, template }

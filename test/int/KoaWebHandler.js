@@ -28,13 +28,19 @@ describe('test::int::KoaWebHandler', function(){
       
       static template_getThePath = 'whatever'
       static getThePath(ctx) {
-         return 'goes in `whatever` for GET /the/path'
+        ctx.state = {
+          one: 'onestate',
+          two: 'twostate',
+        }
+        return 'goes in `whatever` for GET /the/path'
       }
 
-      static responseOveralls(ctx) {
+      static postOveralls() {
          return '<span>some html on /overalls</span>'
       }
     }
+    expect(MyHandler.routeConfig()).to.be.an('array').and.have.lengthOf(2)
+    // expect()
   })
 
 })
