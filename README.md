@@ -1,11 +1,11 @@
-@mhio/koa-web
+@mhio/koa-web | [git](https://github.com/mhio/node-koa-web) | [npm](https://www.npmjs.com/package/@mhio/koa-web)
 --------------------
 
 A Koa Web module to do all the request heavy lifting, so you just write logic/templates
 
-Errors, logging, and templates are handled, just `return` the data or `throw` the error
+Errors, logging, and templates are handled, just `return` the data or `throw` the errors
 
-Based on [`@mhio/koa-web-handler`](https://github.com/mhio/node-koa-web-handle).
+Based on [`@mhio/koa-web-handle`](https://github.com/mhio/node-koa-web-handle) under the hood.
 
 ## Install
 
@@ -81,7 +81,7 @@ web.listen().then(srv => console.log(srv))
 
 ## Related
 
-[npm](https://www.npmjs.com/package/@mhio/koa-web-handle)
+[npm](https://www.npmjs.com/package/@mhio/koa-web)
 
 [@mhio/koa-api](https://www.npmjs.com/package/@mhio/koa-api) /
  [@mhio/koa-api-handle](https://www.npmjs.com/package/@mhio/koa-api-handle)
