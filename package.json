@@ -33,6 +33,7 @@
     "@babel/cli": "~7.12.1",
     "@babel/core": "~7.12.3",
     "@babel/plugin-transform-async-to-generator": "~7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "7.12.1",
     "@babel/register": "~7.12.1",
     "@mhio/taxios": "~0.2.0",
@@ -50,7 +51,6 @@
     "source-map-support": "^0.5.2"
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@koa/router": "~10.0.0",
     "@mhio/exception": "^0.2.1",
     "@mhio/koa-web-handle": "~0.6.0",
