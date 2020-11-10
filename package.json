@@ -1,6 +1,6 @@
 {
   "name": "@mhio/koa-web",
-  "version": "0.1.0-0",
+  "version": "0.1.0",
   "description": "Koa Web Sites",
   "main": "lib/index.js",
   "scripts": {
